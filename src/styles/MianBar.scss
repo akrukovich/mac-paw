@@ -41,12 +41,7 @@
   opacity: 0;
   cursor: pointer;
 }
-.joke_search {
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
+.joke-search {
 
   &__option {
     margin-left: 10px;
@@ -59,5 +54,26 @@
     font-size: 18px;
     line-height: 26px;
 
+  }
+  &__categories {
+    margin: 20px 0;
+  }
+  &__category {
+    display: inline-block;
+    height: 28px;
+    border: 2px solid #F8F8F8;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 10px;
+    vertical-align: center;
+
+    color: #ABABAB;
   }
 }
