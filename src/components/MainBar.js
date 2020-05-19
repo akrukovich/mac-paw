@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import '../styles/MianBar.scss'
-import divWithClassName from "react-bootstrap/cjs/divWithClassName";
+import {FaExternalLinkAlt} from 'react-icons/fa'
+import {MdMessage} from 'react-icons/md'
+import {BsHeart} from 'react-icons/bs'
 
 
 class CheckBox extends Component {
@@ -51,7 +53,9 @@ class Categories extends Component {
   }
 
   render() {
-    const categories = this.state.categories.map(category => <Category name={category}/>)
+    const categories = this.state.categories.map(category => <Category activeCategory={this.props.activeCategory}
+                                                                       setCategory={this.props.setCategory}
+                                                                       name={category}/>)
     return (
       <div className="joke-search__categories">
         {categories}
@@ -61,22 +65,72 @@ class Categories extends Component {
   }
 }
 
-function Category({name}) {
-  return <span className='joke-search__category'>{name}</span>
+function Category({name, setCategory, activeCategory}) {
+  const categoryClassName = name === activeCategory
+    ? "joke-search__category joke-search__category--active"
+    : "joke-search__category"
+  return <span onClick={setCategory} className={categoryClassName}>{name}</span>
+}
+
+class Joke extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {value, id, url, updated_at, categories} = this.props.joke
+
+    const updatedAt = new Date(updated_at)
+    const now = new Date()
+    const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
+
+    return (
+      <li className="joke-section__item">
+        <div className="joke-container container pt-5 pb-5">
+          <div className="joke-container__content row ml-5">
+            <span className="joke-container__meta meta-data col-12 "><span className="meta-data__text">ID:</span><a
+              href={url}><span
+              className="meta-data__id">{id}</span><span className="meta-data__icon">
+              <FaExternalLinkAlt/></span></a></span>
+            <p className="joke-container__joke col-12 ">
+              {value}
+            </p>
+            <span className="joke--container__timestamp col-12">
+              Last update: {hoursAgo} hours ago
+            </span>
+            <span className="category col-3 text-center " style={categories[0] ? {display: "block"} : {display: "none"}}>
+              {categories[0]}
+            </span>
+          </div>
+          <span className="joke-container__comment">
+            <span> <MdMessage/></span>
+          </span>
+          <span className="joke-container__heart">
+            <span> <BsHeart/></span>
+          </span>
+        </div>
+      </li>
+    )
+  }
 }
 
 class Jokes extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const jokes = this.props.jokes;
-    // console.log(typeof jokes.result)
-    // const jokesItems = jokes.result.map((joke) =>
-    //   <li>{joke.value}</li>
-    // );
+    let jokesItems;
+    if (jokes.result) {
+      jokesItems = jokes.result.map(joke => {
+        return <Joke joke={joke}/>
+      })
+    } else {
+      jokesItems = <Joke joke={jokes}/>
+    }
     return (
-      <ul>jokesItems</ul>
+      <ul className="joke-section__list">{jokesItems}</ul>
     );
 
 
@@ -87,15 +141,16 @@ export default class MainBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
+      selected: "random",
       category: "",
       jokes: null,
+      textInput: ''
     }
     this.getJokes = this.getJokes.bind(this)
   }
 
-  async fetchData(r) {
-    return await fetch('https://api.chucknorris.io/jokes/random')
+  async fetchData(queryString) {
+    return await fetch('https://api.chucknorris.io/jokes/' + queryString)
       .then((response) => {
         return response.json();
       })
@@ -106,17 +161,24 @@ export default class MainBar extends Component {
 
   getJokes() {
     if (this.state.selected === 'random') {
-      this.fetchData('random').then(joke => {
-        this.setState({jokes: joke}
-        )
-      })
-
+      this.fetchData('random').then(joke => this.setState({jokes: joke}))
+    } else if (this.state.selected === 'categories') {
+      this.fetchData(`random?category=${this.state.category}`)
+        .then(joke => this.setState({jokes: joke}))
+    } else {
+      this.fetchData(`search?query=${this.state.textInput}`)
+        .then(joke => this.setState({jokes: joke}))
     }
   }
+
+  setCategory = e => {
+    this.setState({category: e.target.innerText.trim().toLowerCase()})
+  };
 
   toggleState = (e) => {
     this.setState({selected: e.target.value})
   }
+
 
   render() {
     return (
@@ -142,18 +204,22 @@ export default class MainBar extends Component {
                    onChange={this.toggleState} type="radio"/>
             From Categories
           </label><br/>
-          {this.state.selected === 'categories' ? <Categories/> : null}
+          {this.state.selected === 'categories' ?
+            <Categories activeCategory={this.state.category} setCategory={this.setCategory}/> : null}
           <label className="joke-search__label">
             <input className="joke-search__option" value="search"
                    checked={this.state.selected === 'search'}
                    onChange={this.toggleState} type="radio"/>
             Search
           </label><br/>
-          {this.state.selected === 'search' ? <input type="text"/> : null}
-          <button className="joke_search__button" onClick={this.getJokes}>Get a joke</button>
+          {this.state.selected === 'search' ?
+            <input className="joke-search__input" onChange={(event => this.setState({
+              textInput: event.target.value.trim()
+            }))} placeholder="Free text search"/> : null}
+          <button className="joke-search__button" onClick={this.getJokes}>Get a joke</button>
         </div>
         <section className="jokes-section">
-          {this.state.jokes? <Jokes jokes={this.state.jokes}/> : null}
+          {this.state.jokes ? <Jokes jokes={this.state.jokes}/> : null}
         </section>
       </main>
     );

@@ -1,3 +1,8 @@
+@import "~bootstrap/scss/bootstrap";
+*{
+  font-family: Roboto, serif;
+}
+
 .intro {
   display: flex;
   justify-content: space-between;
@@ -59,8 +64,8 @@
     margin: 20px 0;
   }
   &__category {
+    cursor: pointer;
     display: inline-block;
-    height: 28px;
     border: 2px solid #F8F8F8;
     box-sizing: border-box;
     border-radius: 6px;
@@ -71,9 +76,147 @@
     line-height: 16px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin: 10px;
-    vertical-align: center;
-
+    margin: 0 10px 10px 0;
+    padding: 4px 15px;
     color: #ABABAB;
   }
+  &__category--active{
+    background: #F8F8F8;
+    border: 2px solid #F8F8F8;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    color: #333333;
+  }
+  &__button {
+    width: 152px;
+    height: 42px;
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+    margin: 20px 0;
+
+  }
+  &__input {
+    border: 2px solid #333333;
+    box-sizing: border-box;
+    border-radius: 10px;
+    height: 42px;
+    width: 90%;
+    margin: 20px 0 0 0;
+  }
+  &__input::placeholder {
+    padding: 10px 15px;
+  }
+  &__input:focus{
+    outline: none;
+    box-shadow: 5px 5px 15px 5px #000000;
+    caret-color: deeppink;
+  }
+
+}
+.joke-section{
+  &__list{
+    list-style-type: none;
+    padding: 0;
+  }
+  &__item {
+    margin-bottom: 20px;
+    position: relative;
+  }
+}
+
+.joke-container{
+  background: #F8F8F8;
+  border-radius: 20px;
+  position: relative;
+
+  &__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    color: #333333;
+  }
+  &__comment {
+    color: #ABABAB;
+    height: 40px;
+    width: 40px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 55px;
+  }
+  &__heart {
+    color: #FF6767;
+    font-size:20px;
+    position:absolute;
+    top:20px;
+    right:20px
+  }
+  &__timestamp {
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    color: #ABABAB;
+  }
+  &__comment > span {
+    font-size:20px
+  }
+}
+.meta-data{
+  &__icon {
+    color: #8EA7FF;
+    font-size: 15px
+  }
+  &__id{
+    text-decoration: underline;
+    margin-right: 5px;
+    color:#8EA7FF;
+  }
+  &__id,&__text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    color: #ABABAB;
+  }
+  &__id{
+    text-decoration: underline;
+    margin-right: 5px;
+    color:#8EA7FF;
+  }
+}
+.category {
+  display: inline-block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #FFFFFF;
+  border-radius: 6px;
+  color: #333333;
+  padding: 6px 20px;
+}
+.joke--container__timestamp {
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+  margin-bottom: 10px;
 }
