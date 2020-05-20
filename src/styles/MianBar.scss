@@ -79,6 +79,7 @@
     margin: 0 10px 10px 0;
     padding: 4px 15px;
     color: #ABABAB;
+    animation: expand .5s ease-in-out;
   }
   &__category--active{
     background: #F8F8F8;
@@ -109,6 +110,7 @@
     height: 42px;
     width: 90%;
     margin: 20px 0 0 0;
+    animation: expand .5s ease-in-out;
   }
   &__input::placeholder {
     padding: 10px 15px;
@@ -135,6 +137,7 @@
   background: #F8F8F8;
   border-radius: 20px;
   position: relative;
+  animation: expand .5s ease-in-out;
 
   &__text {
     font-style: normal;
@@ -219,4 +222,11 @@
   line-height: 14px;
   color: #ABABAB;
   margin-bottom: 10px;
+}
+@keyframes expand {
+  from {
+    transform: scale(0);
+    opacity: 0;
+    background: #5470B0;
+  }
 }
