@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import '../styles/MianBar.scss'
 import {FaExternalLinkAlt} from 'react-icons/fa'
 import {MdMessage} from 'react-icons/md'
-import {BsHeart} from 'react-icons/bs'
+import {BsHeart, BsHeartFill} from 'react-icons/bs'
 
 
 class CheckBox extends Component {
@@ -75,38 +75,104 @@ function Category({name, setCategory, activeCategory}) {
 class Joke extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      favorite: false,
+      jokeData: {
+        value: '',
+        url: '',
+        id: '',
+        hoursAgo: '',
+        category: ''
+      }
+    }
   }
 
-  render() {
-    const {value, id, url, updated_at, categories} = this.props.joke
+  saveJoke(id) {
+    const tmpJokes = JSON.parse(localStorage.getItem('favoriteJokes'));
+    const isSaved = tmpJokes.filter(joke => joke.id === id).length
+    console.log(isSaved)
+    if (!isSaved) {
+      tmpJokes.push({
+        value: this.state.jokeData.value,
+        url: this.state.jokeData.url,
+        id: this.state.jokeData.id,
+        hoursAgo: this.state.jokeData.hoursAgo,
+        category: this.state.jokeData.category
+      })
+    }
+    localStorage.setItem('favoriteJokes', JSON.stringify(tmpJokes))
+  }
 
+  deleteJoke(id) {
+    const tmpJokes = JSON.parse(localStorage.getItem('favoriteJokes'));
+    const newJokeList = tmpJokes.filter(joke => joke.id !== id)
+    localStorage.setItem('favoriteJokes', JSON.stringify(newJokeList))
+  }
+
+  heartToggle = (e) => {
+    this.setState({favorite: !this.state.favorite})
+    if (!this.state.favorite) {
+      this.saveJoke(this.state.jokeData.id)
+    } else {
+      this.deleteJoke(this.state.jokeData.id)
+    }
+  }
+
+  componentDidMount() {
+    const {value, id, url, updated_at, categories} = this.props.joke
+    const category = categories[0]
     const updatedAt = new Date(updated_at)
     const now = new Date()
     const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
+    const tmpJokes = JSON.parse(localStorage.getItem('favoriteJokes'));
+    const isFavorite = tmpJokes.filter(joke => joke.id === id).length
+
+
+    this.setState({
+      favorite: isFavorite,
+      jokeData: {
+        value: value,
+        url: url,
+        id: id,
+        hoursAgo: hoursAgo,
+        category: category
+      }
+    })
+  }
+
+
+  render() {
+    // const {value, id, url, updated_at, categories} = this.props.joke
+    // const category = categories[0]
+    // const updatedAt = new Date(updated_at)
+    // const now = new Date()
+    // const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
+
 
     return (
       <li className="joke-section__item">
         <div className="joke-container container pt-5 pb-5">
           <div className="joke-container__content row ml-5">
             <span className="joke-container__meta meta-data col-12 "><span className="meta-data__text">ID:</span><a
-              href={url}><span
-              className="meta-data__id">{id}</span><span className="meta-data__icon">
+              href={this.state.jokeData.url}><span
+              className="meta-data__id">{this.state.jokeData.id}</span><span className="meta-data__icon">
               <FaExternalLinkAlt/></span></a></span>
             <p className="joke-container__joke col-12 ">
-              {value}
+              {this.state.jokeData.value}
             </p>
             <span className="joke--container__timestamp col-12">
-              Last update: {hoursAgo} hours ago
+              Last update: {this.state.jokeData.hoursAgo} hours ago
             </span>
-            <span className="category col-3 text-center " style={categories[0] ? {display: "block"} : {display: "none"}}>
-              {categories[0]}
+            <span className="category col-3 text-center "
+                  style={this.state.jokeData.category ? {display: "block"} : {display: "none"}}>
+              {this.state.jokeData.category}
             </span>
           </div>
           <span className="joke-container__comment">
             <span> <MdMessage/></span>
           </span>
           <span className="joke-container__heart">
-            <span> <BsHeart/></span>
+            <span onClick={this.heartToggle}> {this.state.favorite ? <BsHeartFill/> : <BsHeart/>}</span>
           </span>
         </div>
       </li>
@@ -177,6 +243,13 @@ export default class MainBar extends Component {
 
   toggleState = (e) => {
     this.setState({selected: e.target.value})
+  }
+
+  componentDidMount() {
+    if (!JSON.parse(localStorage.getItem('favoriteJokes'))) {
+      const favoriteJokes = [];
+      localStorage.setItem('favoriteJokes', JSON.stringify(favoriteJokes))
+    }
   }
 
 
