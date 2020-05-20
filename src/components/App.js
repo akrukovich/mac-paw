@@ -5,9 +5,13 @@ import MainBar from "./MainBar";
 class App extends Component {
   render() {
     return (
-      <div className="container">
-      <MainBar/>
-      <div className="sidebar"></div>
+      <div className="container-fluid">
+      <dv className="row">
+        <MainBar/>
+        <aside>
+          Aside
+        </aside>
+      </dv>
       </div>
     )
   }

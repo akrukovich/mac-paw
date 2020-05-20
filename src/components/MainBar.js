@@ -118,6 +118,7 @@ class Joke extends Component {
     }
   }
 
+
   componentDidMount() {
     const {value, id, url, updated_at, categories} = this.props.joke
     const category = categories[0]
@@ -126,7 +127,6 @@ class Joke extends Component {
     const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
     const tmpJokes = JSON.parse(localStorage.getItem('favoriteJokes'));
     const isFavorite = tmpJokes.filter(joke => joke.id === id).length
-
 
     this.setState({
       favorite: isFavorite,
@@ -142,30 +142,31 @@ class Joke extends Component {
 
 
   render() {
-    // const {value, id, url, updated_at, categories} = this.props.joke
-    // const category = categories[0]
-    // const updatedAt = new Date(updated_at)
-    // const now = new Date()
-    // const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
-
+    const {value, id, url, updated_at, categories} = this.props.joke
+    const category = categories[0]
+    const updatedAt = new Date(updated_at)
+    const now = new Date()
+    const hoursAgo = Math.floor(Math.abs((now.getTime() - updatedAt.getTime()) / 3600000))
+    const tmpJokes = JSON.parse(localStorage.getItem('favoriteJokes'));
+    const isFavorite = tmpJokes.filter(joke => joke.id === id).length
 
     return (
       <li className="joke-section__item">
-        <div className="joke-container container pt-5 pb-5">
-          <div className="joke-container__content row ml-5">
+        <div className="joke-container container pt-5 pb-2">
+          <div className="joke-container__content row justify-content-md-between ml-5">
             <span className="joke-container__meta meta-data col-12 "><span className="meta-data__text">ID:</span><a
-              href={this.state.jokeData.url}><span
-              className="meta-data__id">{this.state.jokeData.id}</span><span className="meta-data__icon">
+              href={url}><span
+              className="meta-data__id">{id}</span><span className="meta-data__icon">
               <FaExternalLinkAlt/></span></a></span>
             <p className="joke-container__joke col-12 ">
-              {this.state.jokeData.value}
+              {value}
             </p>
-            <span className="joke--container__timestamp col-12">
-              Last update: {this.state.jokeData.hoursAgo} hours ago
+            <span className="joke--container__timestamp my-auto col-12 col-md-auto ">
+              Last update: {hoursAgo} hours ago
             </span>
-            <span className="category col-3 text-center "
-                  style={this.state.jokeData.category ? {display: "block"} : {display: "none"}}>
-              {this.state.jokeData.category}
+            <span className="category col-auto ml-2 px-2 py-1 my-auto ml-md-0 mr-md-3 "
+                  style={category ? {display: "block"} : {display: "none"}}>
+              {category}
             </span>
           </div>
           <span className="joke-container__comment">
@@ -183,8 +184,10 @@ class Joke extends Component {
 class Jokes extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      jokes:''
+    }
   }
-
   render() {
     const jokes = this.props.jokes;
     let jokesItems;
@@ -255,24 +258,24 @@ export default class MainBar extends Component {
 
   render() {
     return (
-      <main>
-        <div className="intro">
+      <main className="col-12 col-lg-8">
+        <div className="intro col-12">
           <h3 className="intro__label">MSI 2020</h3>
           <div className="intro__burger">burger</div>
         </div>
-        <div className="promo">
+        <div className="promo col-12">
           <h3 className="promo__heading">Hey!</h3>
           <p className="promo__content">Let’s try to find a joke for you:</p>
         </div>
-        <div className="joke-search">
+        <div className="joke-search col-12">
           <label className="joke-search__label">
-            <input className="joke-search__option" value="random"
+            <input className="joke-search__option mr-2" value="random"
                    checked={this.state.selected === 'random'}
                    onChange={this.toggleState} type="radio"/>
             Random
           </label><br/>
           <label className="joke-search__label">
-            <input className="joke-search__option" value="categories"
+            <input className="joke-search__option mr-2" value="categories"
                    checked={this.state.selected === 'categories'}
                    onChange={this.toggleState} type="radio"/>
             From Categories
@@ -280,18 +283,18 @@ export default class MainBar extends Component {
           {this.state.selected === 'categories' ?
             <Categories activeCategory={this.state.category} setCategory={this.setCategory}/> : null}
           <label className="joke-search__label">
-            <input className="joke-search__option" value="search"
+            <input className="joke-search__option mr-2" value="search"
                    checked={this.state.selected === 'search'}
                    onChange={this.toggleState} type="radio"/>
             Search
           </label><br/>
           {this.state.selected === 'search' ?
-            <input className="joke-search__input" onChange={(event => this.setState({
+            <input className="joke-search__input w-100" onChange={(event => this.setState({
               textInput: event.target.value.trim()
             }))} placeholder="Free text search"/> : null}
           <button className="joke-search__button" onClick={this.getJokes}>Get a joke</button>
         </div>
-        <section className="jokes-section">
+        <section className="jokes-section col-12">
           {this.state.jokes ? <Jokes jokes={this.state.jokes}/> : null}
         </section>
       </main>

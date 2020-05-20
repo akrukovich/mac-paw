@@ -49,7 +49,6 @@
 .joke-search {
 
   &__option {
-    margin-left: 10px;
   }
 
   &__label {
@@ -108,7 +107,6 @@
     box-sizing: border-box;
     border-radius: 10px;
     height: 42px;
-    width: 90%;
     margin: 20px 0 0 0;
     animation: expand .5s ease-in-out;
   }
@@ -212,7 +210,6 @@
   background: #FFFFFF;
   border-radius: 6px;
   color: #333333;
-  padding: 6px 20px;
 }
 .joke--container__timestamp {
   display: inline-block;
