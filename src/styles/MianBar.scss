@@ -1,51 +1,23 @@
 @import "~bootstrap/scss/bootstrap";
-*{
-  font-family: Roboto, serif;
-}
 .main-bar {
   position: relative;
   z-index: 1;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: bold;
 }
 .intro {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 80px;
 
   &__label {
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: bold;
     font-size: 20px;
     line-height: 28px;
-  }
-  &__burger {
-    font-size: 20px;
-    height: 25px;
-    width: 25px;
-    transform: rotate(90deg);
-    background: #333333;
-    color: #FFFFFF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 110px;
-  }
-  &__favorite {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    color: #ABABAB;
   }
 }
 
 .promo {
   margin-bottom: 45px;
-
   &__heading {
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: bold;
     font-size: 32px;
     line-height: 44px;
     color: #333333;
@@ -53,13 +25,9 @@
   }
 
   &__content {
-    font-family: Roboto, serif;
-    font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 44px;
-    margin: 0;
-
     color: #333333;
   }
 }
@@ -68,31 +36,25 @@
   opacity: 0;
   cursor: pointer;
 }
+.category {
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 6px;
+}
 .joke-search {
-
-  &__option {
-  }
-
   &__label {
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: normal;
     font-size: 18px;
     line-height: 26px;
-
   }
   &__categories {
     margin: 20px 0;
   }
   &__category {
     cursor: pointer;
-    display: inline-block;
     border: 2px solid #F8F8F8;
     box-sizing: border-box;
-    border-radius: 6px;
-    font-family: Roboto, serif;
-    font-style: normal;
-    font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
@@ -104,11 +66,6 @@
   }
   &__category--active{
     background: #F8F8F8;
-    border: 2px solid #F8F8F8;
-    box-sizing: border-box;
-    border-radius: 6px;
-    font-style: normal;
-    font-weight: 500;
     color: #333333;
   }
   &__button {
@@ -116,17 +73,14 @@
     height: 42px;
     background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
     border-radius: 10px;
-    font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 22px;
     color: #FFFFFF;
     margin: 20px 0;
-
   }
   &__input {
     border: 2px solid #333333;
-    box-sizing: border-box;
     border-radius: 10px;
     height: 42px;
     margin: 20px 0 0 0;
@@ -140,7 +94,6 @@
     box-shadow: 5px 5px 15px 5px #000000;
     caret-color: deeppink;
   }
-
 }
 .joke-section{
   &__list{
@@ -150,102 +103,5 @@
   &__item {
     margin-bottom: 20px;
     position: relative;
-  }
-}
-
-.joke-container{
-  background: #F8F8F8;
-  border-radius: 20px;
-  position: relative;
-  animation: expand .5s ease-in-out;
-
-  &__text {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 26px;
-    color: #333333;
-  }
-  &__comment {
-    color: #ABABAB;
-    height: 40px;
-    width: 40px;
-    background-color: #FFFFFF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 20px;
-    top: 55px;
-  }
-  &__heart {
-    color: #FF6767;
-    font-size:20px;
-    position:absolute;
-    top:20px;
-    right:20px
-  }
-  &__timestamp {
-    display: inline-block;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 14px;
-    color: #ABABAB;
-  }
-  &__comment > span {
-    font-size:20px
-  }
-}
-.meta-data{
-  &__icon {
-    color: #8EA7FF;
-    font-size: 15px
-  }
-  &__id{
-    text-decoration: underline;
-    margin-right: 5px;
-    color:#8EA7FF;
-  }
-  &__id,&__text {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 14px;
-    color: #ABABAB;
-  }
-  &__id{
-    text-decoration: underline;
-    margin-right: 5px;
-    color:#8EA7FF;
-  }
-}
-.category {
-  display: inline-block;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: #FFFFFF;
-  border-radius: 6px;
-  color: #333333;
-}
-.joke--container__timestamp {
-  display: inline-block;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 14px;
-  color: #ABABAB;
-  margin-bottom: 10px;
-}
-@keyframes expand {
-  from {
-    transform: scale(0);
-    opacity: 0;
-    background: #5470B0;
   }
 }

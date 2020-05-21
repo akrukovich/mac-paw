@@ -1,0 +1,19 @@
+@import "import_modules";
+.joke-container{
+  @include joke-container-mixin;
+
+  &__text {
+    font-size: 18px;
+    line-height: 26px;
+    color: #333333;
+  }
+  &__category{
+    font-size: 10px;
+    line-height: 14px;
+    color: #333333;
+    background: #FFFFFF;
+  }
+  &__comment > span {
+    font-size:20px
+  }
+}
