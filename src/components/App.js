@@ -64,6 +64,10 @@ class App extends Component {
   }
 
   render() {
+    if (!JSON.parse(localStorage.getItem('favoriteJokes'))) {
+      const favoriteJokes = [];
+      localStorage.setItem('favoriteJokes', JSON.stringify(favoriteJokes))
+    }
     const icon = 'toggle-container__icon'
     return (
       <div className="main-container container-fluid h-100">

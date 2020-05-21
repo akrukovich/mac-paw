@@ -62,13 +62,6 @@ export default class MainBar extends Component {
     this.setState({selected: e.target.value})
   }
 
-  componentDidMount() {
-    if (!JSON.parse(localStorage.getItem('favoriteJokes'))) {
-      const favoriteJokes = [];
-      localStorage.setItem('favoriteJokes', JSON.stringify(favoriteJokes))
-    }
-  }
-
   render() {
     return (
       <main className="main-bar col-12 col-lg-8 p-3 h-100">

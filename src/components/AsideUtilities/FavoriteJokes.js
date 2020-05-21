@@ -104,7 +104,6 @@ export default class FavoriteJokes extends Component {
   }
 
   render() {
-
     const jokesItems = this.state.jokes.map(joke => {
       return <FavoriteJoke key={joke.id} joke={joke}/>
     })
