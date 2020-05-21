@@ -3,6 +3,7 @@ import '../styles/MianBar.scss'
 import {FaExternalLinkAlt} from 'react-icons/fa'
 import {MdMessage} from 'react-icons/md'
 import {BsHeart, BsHeartFill} from 'react-icons/bs'
+import {AiOutlinePause} from 'react-icons/ai'
 
 
 class CheckBox extends Component {
@@ -72,7 +73,7 @@ function Category({name, setCategory, activeCategory}) {
   return <span onClick={setCategory} className={categoryClassName}>{name}</span>
 }
 
-class Joke extends Component {
+export class Joke extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,7 +98,8 @@ class Joke extends Component {
         url: this.state.jokeData.url,
         id: this.state.jokeData.id,
         hoursAgo: this.state.jokeData.hoursAgo,
-        category: this.state.jokeData.category
+        category: this.state.jokeData.category,
+        favorite: true
       })
     }
     localStorage.setItem('favoriteJokes', JSON.stringify(tmpJokes))
@@ -181,18 +183,23 @@ class Joke extends Component {
   }
 }
 
-class Jokes extends Component {
+export class Jokes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jokes:''
+      jokes: ''
     }
   }
+
   render() {
     const jokes = this.props.jokes;
     let jokesItems;
     if (jokes.result) {
       jokesItems = jokes.result.map(joke => {
+        return <Joke joke={joke}/>
+      })
+    } else if (Array.isArray(jokes)) {
+      jokesItems = jokes.map(joke => {
         return <Joke joke={joke}/>
       })
     } else {
@@ -210,6 +217,7 @@ export default class MainBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      width:window.innerWidth,
       selected: "random",
       category: "",
       jokes: null,
@@ -248,20 +256,29 @@ export default class MainBar extends Component {
     this.setState({selected: e.target.value})
   }
 
+
+  handleResize = e => {
+    const windowSize = window.innerWidth;
+    this.setState({width:windowSize})
+  };
   componentDidMount() {
     if (!JSON.parse(localStorage.getItem('favoriteJokes'))) {
       const favoriteJokes = [];
       localStorage.setItem('favoriteJokes', JSON.stringify(favoriteJokes))
     }
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
   }
 
 
   render() {
     return (
-      <main className="col-12 col-lg-8">
+      <main className="main-bar col-12 col-lg-8 p-3" >
         <div className="intro col-12">
           <h3 className="intro__label">MSI 2020</h3>
-          <div className="intro__burger">burger</div>
         </div>
         <div className="promo col-12">
           <h3 className="promo__heading">Hey!</h3>
