@@ -4,7 +4,7 @@ import {MdMessage} from "react-icons/md";
 import {BsHeart, BsHeartFill} from "react-icons/bs";
 import '../../styles/Jokes.scss'
 
-class Joke extends Component {
+export class Joke extends Component {
   constructor(props) {
     super(props);
     this.state = {

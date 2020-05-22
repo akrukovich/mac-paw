@@ -4,7 +4,7 @@ import {MdMessage} from "react-icons/md";
 import {BsHeartFill} from "react-icons/bs";
 import '../../styles/FavoriteJokes.scss'
 
-class FavoriteJoke extends Component {
+export class FavoriteJoke extends Component {
   constructor(props) {
     super(props);
     const {value, id, url, hoursAgo, category} = this.props.joke

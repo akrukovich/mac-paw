@@ -28,7 +28,7 @@ export default class Categories extends Component {
   }
 }
 
-function Category({name, setCategory, activeCategory}) {
+export function Category({name, setCategory, activeCategory}) {
   const categoryClassPart = "joke-search__category category"
   const categoryClassName = name === activeCategory
     ? categoryClassPart + " joke-search__category--active"

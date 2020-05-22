@@ -1,0 +1,11 @@
+{
+  "categories": [
+    "dev"
+  ],
+  "created_at": "2020-01-05 13:42:19.576875",
+  "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+  "id": "wlmypgkkrlgjguoyhc2e0q",
+  "updated_at": "2020-01-05 13:42:19.576875",
+  "url": "https://api.chucknorris.io/jokes/wlmypgkkrlgjguoyhc2e0q",
+  "value": "Chuck Norris doesn't go on the internet, he has every internet site stored in his memory. He refreshes webpages by blinking."
+}

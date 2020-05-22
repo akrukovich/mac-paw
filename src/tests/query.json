@@ -1,0 +1,50 @@
+{
+  "total": 5,
+  "result": [
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "rkG_VAn9TGiJXq3glYEX5A",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/rkG_VAn9TGiJXq3glYEX5A",
+      "value": "Chuck Norris CAN see John Cena."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:19.897976",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "z4VtAu1iRtmPK77TUANJ3Q",
+      "updated_at": "2020-01-05 13:42:19.897976",
+      "url": "https://api.chucknorris.io/jokes/z4VtAu1iRtmPK77TUANJ3Q",
+      "value": "Chuck Norris CAN see John Cena, and he still thinks he's a bitch."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:22.089095",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "Jc287Gy4SmCaljGcyGIh1A",
+      "updated_at": "2020-01-05 13:42:22.089095",
+      "url": "https://api.chucknorris.io/jokes/Jc287Gy4SmCaljGcyGIh1A",
+      "value": "Chuck Norris CAN see John Cena, and he still had honks he's a bitch."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:26.447675",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "i4-Tjkr4Rd2bd1DE2SMasA",
+      "updated_at": "2020-01-05 13:42:26.447675",
+      "url": "https://api.chucknorris.io/jokes/i4-Tjkr4Rd2bd1DE2SMasA",
+      "value": "Chuck Norris can see John Cena."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:29.296379",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "tFrlE_uVR0q90N9tRsOgIA",
+      "updated_at": "2020-01-05 13:42:29.296379",
+      "url": "https://api.chucknorris.io/jokes/tFrlE_uVR0q90N9tRsOgIA",
+      "value": "Chuck Norris can see John Cena"
+    }
+  ]
+}

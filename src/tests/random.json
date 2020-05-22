@@ -1,0 +1,11 @@
+{
+  "categories": [
+    "dev"
+  ],
+  "created_at": "2020-01-05 13:42:19.324003",
+  "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+  "id": "caghe37xsemyequkhrpzcg",
+  "updated_at": "2020-01-05 13:42:19.324003",
+  "url": "https://api.chucknorris.io/jokes/caghe37xsemyequkhrpzcg",
+  "value": "With Chuck Norris P = NP. There's no nondeterminism with Chuck Norris decisions."
+}
