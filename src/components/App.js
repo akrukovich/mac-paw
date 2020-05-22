@@ -70,8 +70,8 @@ class App extends Component {
     }
     const icon = 'toggle-container__icon'
     return (
-      <div className="main-container container-fluid h-100">
-        <div className="row  h-100">
+      <div className="main-container container-fluid">
+        <div className="row ">
           <MainBar reRenderHeartChange={this.reRenderHeartChange}/>
           <Aside heartClick={this.state.heartClick} windowSize={this.state.width}/>
         </div>

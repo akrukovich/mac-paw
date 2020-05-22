@@ -12,7 +12,7 @@ export default class Aside extends Component {
 
   render() {
     return (
-      <aside className="aside-container col-lg-4  col-md-7 ml-auto pt-5 pt-lg-2 h-auto">
+      <aside className="aside-container col-lg-4  col-md-7 ml-auto pt-5 pt-lg-2 min-vh-100">
         <div className="favorite-container container">
           <div className="row">
             <div className="favorite-container__list col-12 ">
