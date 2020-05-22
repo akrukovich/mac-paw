@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/akrukovich/mac-paw.svg?branch=develop)](https://travis-ci.org/akrukovich/mac-paw)
+[![Coverage Status](https://coveralls.io/repos/github/akrukovich/mac-paw/badge.svg?branch=develop)](https://coveralls.io/github/akrukovich/mac-paw?branch=develop)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
