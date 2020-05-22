@@ -28,7 +28,6 @@ class FavoriteJoke extends Component {
   }
 
   heartToggle = () => {
-
     setInterval(()=>{
       this.setState({
         opacity:this.state.opacity - 0.1
@@ -37,6 +36,7 @@ class FavoriteJoke extends Component {
     setTimeout(()=>{
       this.setState({favorite: !this.state.favorite})
       this.deleteJoke(this.state.jokeData.id)
+      this.props.reRenderFavorHeartChange()
     },1000)
   }
 
@@ -70,7 +70,7 @@ class FavoriteJoke extends Component {
             <span> <MdMessage/></span>
           </span>
           <span className="favoriteJoke-container__heart heart">
-            <span onClick={() => {this.heartToggle();}}>
+            <span onClick={(e) => {this.heartToggle(e);}}>
               <BsHeartFill/>
             </span>
           </span>
@@ -89,13 +89,6 @@ export default class FavoriteJokes extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({
-      jokes: JSON.parse(localStorage.getItem('favoriteJokes')),
-      reRenderOnClick: this.props.heartClick
-    })
-  }
-
   static getDerivedStateFromProps(props, state) {
     return {
       jokes: JSON.parse(localStorage.getItem('favoriteJokes')),
@@ -105,7 +98,7 @@ export default class FavoriteJokes extends Component {
 
   render() {
     const jokesItems = this.state.jokes.map(joke => {
-      return <FavoriteJoke key={joke.id} joke={joke}/>
+      return <FavoriteJoke reRenderFavorHeartChange={this.props.reRenderFavorHeartChange} key={joke.id} joke={joke}/>
     })
 
     return (

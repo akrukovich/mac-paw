@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       isAside: false,
       width: window.innerWidth,
-      heartClick: ''
+      heartClick: '',
+      favorClick: ''
     }
   }
 
@@ -49,9 +50,14 @@ class App extends Component {
     }
   };
 
-  reRenderHeartChange = (e) => {
+  reRenderHeartChange = () => {
     this.setState({
-      heartClick: e.target
+      heartClick: null
+    })
+  }
+  reRenderFavorHeartChange = () => {
+    this.setState({
+      heartClick: null
     })
   }
 
@@ -72,8 +78,9 @@ class App extends Component {
     return (
       <div className="main-container container-fluid">
         <div className="row ">
-          <MainBar reRenderHeartChange={this.reRenderHeartChange}/>
-          <Aside heartClick={this.state.heartClick} windowSize={this.state.width}/>
+          <MainBar heartClick={this.state.favorClick} reRenderHeartChange={this.reRenderHeartChange}/>
+          <Aside heartClick={this.state.heartClick} reRenderFavorHeartChange={this.reRenderFavorHeartChange}
+                 windowSize={this.state.width}/>
         </div>
         <div className="overlay">
         </div>
@@ -82,8 +89,8 @@ class App extends Component {
             <span className="toggle-container__favorite float-right">Favorite</span>
             <span className={
               this.state.isAside
-              ? icon + " toggle-container__icon--closed "
-              : icon + " toggle-container__icon--opened"
+                ? icon + " toggle-container__icon--closed "
+                : icon + " toggle-container__icon--opened"
             } onClick={this.toggleIcon}> {
               !this.state.isAside
                 ? <FaGripLines/>

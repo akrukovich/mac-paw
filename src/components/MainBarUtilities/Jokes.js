@@ -41,14 +41,14 @@ class Joke extends Component {
     localStorage.setItem('favoriteJokes', JSON.stringify(newJokeList))
   }
 
-  heartToggle = (e) => {
+  heartToggle = () => {
     this.setState({favorite: !this.state.favorite})
     if (!this.state.favorite) {
       this.saveJoke(this.state.jokeData.id)
     } else {
       this.deleteJoke(this.state.jokeData.id)
     }
-    this.props.reRenderHeartChange(e)
+    this.props.reRenderHeartChange()
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -89,7 +89,7 @@ class Joke extends Component {
             <span className="joke-container__timestamp timestamp my-auto col-12 col-md-auto ">
               Last update: {hoursAgo} hours ago
             </span>
-            <span className="joke-container__category category  col-auto ml-2 px-2 py-1 my-auto ml-md-0 mr-md-3 "
+            <span className="joke-container__category category  col-auto ml-2 px-2 py-1 mt-2 ml-md-0 mr-md-3 "
                   style={category
                       ? {display: "block"}
                       : {display: "none"}}>
@@ -115,7 +115,19 @@ export default class Jokes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jokes: ''
+      jokes: '',
+      reRenderOnClick:''
+    }
+  }
+  componentDidMount() {
+    this.setState({
+      reRenderOnClick: this.props.heartClick
+    })
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      reRenderOnClick: props.heartClick
     }
   }
 

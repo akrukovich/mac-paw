@@ -17,7 +17,7 @@ export default class Aside extends Component {
           <div className="row">
             <div className="favorite-container__list col-12 ">
               {this.props.windowSize > 992?  <div className="favorite-container__name">Favourite</div> : null}
-              <FavoriteJokes heartClick={this.props.heartClick}/>
+              <FavoriteJokes reRenderFavorHeartChange={this.props.reRenderFavorHeartChange} heartClick={this.props.heartClick}/>
             </div>
           </div>
         </div>

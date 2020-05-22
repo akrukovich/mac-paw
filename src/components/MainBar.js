@@ -105,7 +105,7 @@ export default class MainBar extends Component {
         </div>
         <section className="jokes-section col-12">
           {this.state.jokes
-            ? <Jokes reRenderHeartChange={this.props.reRenderHeartChange} jokes={this.state.jokes}/>
+            ? <Jokes heartClick={this.props.heartClick} reRenderHeartChange={this.props.reRenderHeartChange} jokes={this.state.jokes}/>
             : null
           }
         </section>
