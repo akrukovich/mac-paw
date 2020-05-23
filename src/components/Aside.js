@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import '../styles/Aside.scss'
 import FavoriteJokes from "./AsideUtilities/FavoriteJokes";
+import PropTypes from 'prop-types'
 
 export default class Aside extends Component {
   render() {
@@ -17,4 +18,9 @@ export default class Aside extends Component {
       </aside>
     )
   }
+}
+Aside.propTypes = {
+  heartClick:PropTypes.string,
+  reRenderFavorHeartChange:PropTypes.func,
+  windowSize:PropTypes.number.isRequired,
 }

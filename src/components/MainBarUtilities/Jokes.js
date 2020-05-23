@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types'
 import {FaExternalLinkAlt} from "react-icons/fa";
 import {MdMessage} from "react-icons/md";
 import {BsHeart, BsHeartFill} from "react-icons/bs";
@@ -145,4 +146,20 @@ export default class Jokes extends Component {
       <ul className="joke-section__list">{jokesItems}</ul>
     );
   }
+}
+
+Joke.propTypes = {
+  joke:PropTypes.shape({
+    categories: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    updated_at: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  }),
+  reRenderHeartChange:PropTypes.func,
+}
+Jokes.propTypes = {
+  heartClick:PropTypes.string,
+  reRenderHeartChange:PropTypes.func,
+  jokes:PropTypes.object.isRequired,
 }

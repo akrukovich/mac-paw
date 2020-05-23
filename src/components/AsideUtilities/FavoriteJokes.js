@@ -3,6 +3,7 @@ import {FaExternalLinkAlt} from "react-icons/fa";
 import {MdMessage} from "react-icons/md";
 import {BsHeartFill} from "react-icons/bs";
 import '../../styles/FavoriteJokes.scss'
+import PropTypes from "prop-types";
 
 export class FavoriteJoke extends Component {
   constructor(props) {
@@ -105,4 +106,20 @@ export default class FavoriteJokes extends Component {
       <ul className="favoriteJoke-section__list list-unstyled pt-4">{jokesItems}</ul>
     );
   }
+}
+
+FavoriteJoke.propTypes = {
+  joke:PropTypes.shape({
+    category: PropTypes.string,
+    favorite: PropTypes.bool.isRequired,
+    hoursAgo: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  }),
+  reRenderFavorHeartChange:PropTypes.func,
+}
+FavoriteJokes.propTypes = {
+  heartClick:PropTypes.string,
+  reRenderFavorHeartChange:PropTypes.func,
 }

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types'
 
 export default class Categories extends Component {
   constructor(props) {
@@ -35,4 +36,14 @@ export function Category({name, setCategory, activeCategory}) {
     : categoryClassPart
 
   return <span onClick={setCategory} className={categoryClassName}>{name}</span>
+}
+
+Category.propTypes = {
+  name:PropTypes.string.isRequired,
+  activeCategory:PropTypes.string,
+  setCategory:PropTypes.func.isRequired,
+}
+Categories.propTypes = {
+  activeCategory:PropTypes.string,
+  setCategory:PropTypes.func.isRequired,
 }

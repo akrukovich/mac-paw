@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import '../styles/MianBar.scss'
 import Categories from "./MainBarUtilities/Categories";
 import Jokes from "./MainBarUtilities/Jokes";
+import PropTypes from "prop-types";
 
 export default class MainBar extends Component {
   constructor(props) {
@@ -112,4 +113,8 @@ export default class MainBar extends Component {
       </main>
     );
   }
+}
+MainBar.propTypes = {
+  heartClick:PropTypes.string,
+  reRenderHeartChange:PropTypes.func
 }
