@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import '../styles/Aside.scss'
+import React, { Component } from "react";
+import "../styles/Aside.scss";
 import FavoriteJokes from "./AsideUtilities/FavoriteJokes";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 export default class Aside extends Component {
   render() {
@@ -10,17 +10,22 @@ export default class Aside extends Component {
         <div className="favorite-container container">
           <div className="row">
             <div className="favorite-container__list col-12 ">
-              {this.props.windowSize > 992?  <div className="favorite-container__name">Favourite</div> : null}
-              <FavoriteJokes reRenderFavorHeartChange={this.props.reRenderFavorHeartChange} heartClick={this.props.heartClick}/>
+              {this.props.windowSize > 992 && (
+                <div className="favorite-container__name">Favourite</div>
+              )}
+              <FavoriteJokes
+                reRenderFavorHeartChange={this.props.reRenderFavorHeartChange}
+                heartClick={this.props.heartClick}
+              />
             </div>
           </div>
         </div>
       </aside>
-    )
+    );
   }
 }
 Aside.propTypes = {
-  heartClick:PropTypes.string,
-  reRenderFavorHeartChange:PropTypes.func,
-  windowSize:PropTypes.number.isRequired,
-}
+  heartClick: PropTypes.string,
+  reRenderFavorHeartChange: PropTypes.func,
+  windowSize: PropTypes.number.isRequired,
+};

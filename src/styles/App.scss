@@ -3,17 +3,16 @@
 .main-container {
   position: relative;
 }
-.toggle-container{
+.toggle-container {
   position: absolute;
-  top:20px;
+  top: 20px;
   right: 20px;
   z-index: 5;
   width: auto;
-
   &__favorite {
     font-size: 20px;
     line-height: 28px;
-    color: #ABABAB;
+    color: #ababab;
   }
 
   &__icon {
@@ -27,13 +26,13 @@
     font-size: 36px;
     height: 25px;
     width: 25px;
-    background: #F8F8F8;
+    background: #f8f8f8;
     color: #333333;
     right: 71px;
     top: 0;
     animation: expand 0.5s ease-in-out;
   }
-  &__icon--opened{
+  &__icon--opened {
     font-size: 15px;
     height: 20px;
     width: 20px;
@@ -42,7 +41,6 @@
     border-radius: 50%;
     right: 73px;
     top: 3px;
-
   }
 }
 .overlay {
@@ -65,6 +63,6 @@
   from {
     transform: scale(0);
     opacity: 0;
-   background: #F8F8F8;
+    background: #f8f8f8;
   }
 }

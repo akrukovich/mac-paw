@@ -31,7 +31,7 @@
     color: #333333;
   }
 }
-.joke_search input{
+.joke_search input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -53,7 +53,7 @@
   }
   &__category {
     cursor: pointer;
-    border: 2px solid #F8F8F8;
+    border: 2px solid #f8f8f8;
     box-sizing: border-box;
     font-size: 12px;
     line-height: 16px;
@@ -61,22 +61,22 @@
     text-transform: uppercase;
     margin: 0 10px 10px 0;
     padding: 4px 15px;
-    color: #ABABAB;
-    animation: expand .5s ease-in-out;
+    color: #ababab;
+    animation: expand 0.5s ease-in-out;
   }
-  &__category--active{
-    background: #F8F8F8;
+  &__category--active {
+    background: #f8f8f8;
     color: #333333;
   }
   &__button {
     width: 152px;
     height: 42px;
-    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
     border-radius: 10px;
     font-weight: bold;
     font-size: 16px;
     line-height: 22px;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 20px 0;
   }
   &__input {
@@ -84,24 +84,79 @@
     border-radius: 10px;
     height: 42px;
     margin: 20px 0 0 0;
-    animation: expand .5s ease-in-out;
+    animation: expand 0.5s ease-in-out;
   }
   &__input::placeholder {
     padding: 10px 15px;
   }
-  &__input:focus{
+  &__input:focus {
     outline: none;
     box-shadow: 5px 5px 15px 5px #000000;
     caret-color: deeppink;
   }
 }
-.joke-section{
-  &__list{
+.joke-section {
+  &__list {
     list-style-type: none;
     padding: 0;
   }
   &__item {
     margin-bottom: 20px;
     position: relative;
+  }
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: red;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: red;
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
   }
 }

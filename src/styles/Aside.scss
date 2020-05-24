@@ -1,9 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 .comment {
-  color: #ABABAB;
+  color: #ababab;
   height: 40px;
   width: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -13,11 +13,11 @@
   top: 55px;
 }
 .heart {
-  color: #FF6767;
-  font-size:20px;
-  position:absolute;
-  top:20px;
-  right:20px
+  color: #ff6767;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 .timestamp {
   display: inline-block;
@@ -25,44 +25,45 @@
   font-weight: normal;
   font-size: 10px;
   line-height: 14px;
-  color: #ABABAB;
+  color: #ababab;
 }
-.meta-data{
+.meta-data {
   &__icon {
-    color: #8EA7FF;
-    font-size: 15px
+    color: #8ea7ff;
+    font-size: 15px;
   }
-  &__id{
+  &__id {
     text-decoration: underline;
     margin-right: 5px;
-    color:#8EA7FF;
+    color: #8ea7ff;
   }
-  &__id,&__text {
+  &__id,
+  &__text {
     font-style: normal;
     font-size: 10px;
     line-height: 14px;
-    color: #ABABAB;
+    color: #ababab;
   }
-  &__id{
+  &__id {
     text-decoration: underline;
     margin-right: 5px;
-    color:#8EA7FF;
+    color: #8ea7ff;
   }
 }
 .aside-container {
-  background: #F8F8F8;
+  background: #f8f8f8;
   position: absolute;
   z-index: 3;
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
 }
-.favorite-container__name{
+.favorite-container__name {
   font-size: 20px;
   line-height: 28px;
-  color: #ABABAB;
+  color: #ababab;
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .aside-container {
     display: none;
   }
