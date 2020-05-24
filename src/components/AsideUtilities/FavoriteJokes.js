@@ -27,11 +27,10 @@ export class FavoriteJoke extends Component {
     const newJokeList = tmpJokes.filter((joke) => joke.id !== id);
     localStorage.setItem("favoriteJokes", JSON.stringify(newJokeList));
   };
-
   heartToggle = () => {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState({
-        opacity: this.state.opacity - 0.1,
+        opacity: this.state.opacity - 0.2,
       });
     }, 100);
     setTimeout(() => {
@@ -40,6 +39,9 @@ export class FavoriteJoke extends Component {
       this.props.reRenderFavorHeartChange();
     }, 1000);
   };
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     const {
