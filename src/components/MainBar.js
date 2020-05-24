@@ -1,5 +1,5 @@
 import React, { Component, Suspense, Fragment } from "react";
-import "../styles/MianBar.scss";
+import "../styles/MainBar.scss";
 import Categories from "./MainBarUtilities/Categories";
 import PropTypes from "prop-types";
 const Jokes = React.lazy(() => import("./MainBarUtilities/Jokes"));
